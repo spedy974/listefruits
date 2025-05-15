@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+{% set title = fruit.nom %}
+{% include "_head.html" %}
+<body class="bg-light">
+<div class="container py-4">
+
+  <a href="{{ url_for('index') }}" class="btn btn-secondary mb-4">← Retour à la liste</a>
+
+  <div class="card shadow-sm">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="{{ url_for('static', filename='images/' + fruit.image) }}" class="img-fluid rounded-start" alt="{{ fruit.nom }}">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h2 class="card-title">{{ fruit.nom }}</h2>
+          <p class="card-text">{{ fruit.description }}</p>
+        </div>
+        <div class="mt-4">
+            <a href="{{ url_for('modifier_fruit', fruit_id=fruit.id) }}" class="btn btn-warning me-2">✏️ Modifier</a>
+            <form action="{{ url_for('supprimer_fruit', fruit_id=fruit.id) }}" method="POST" style="display:inline;">
+                <button type="submit" class="btn btn-danger" onclick="return confirm('Confirmer la suppression ?');">🗑️ Supprimer</button>
+            </form>
+</div>
+
+
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

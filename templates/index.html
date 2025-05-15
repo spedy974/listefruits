@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+{% set title = "Liste de fruits" %}
+{% include "_head.html" %}
+<body class="bg-light">
+<div class="container py-4">
+  <h1 class="text-center mb-4">🍎 Liste des fruits</h1>
+  <div class="text-center mb-4">
+    <a href="{{ url_for('ajouter_fruit') }}" class="btn btn-primary">➕ Ajouter un fruit</a>
+  </div>
+
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for fruit in fruits %}
+    <div class="col">
+      <div class="card h-100">
+        <img src="{{ url_for('static', filename='images/' + fruit.image) }}" class="card-img-top" alt="{{ fruit.nom }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ fruit.nom }}</h5>
+          <p class="card-text">{{ fruit.description[:100] }}{% if fruit.description|length > 100 %}...{% endif %}</p>
+        </div>
+        <div class="card-footer">
+          <a href="{{ url_for('fruit_detail', fruit_id=fruit.id) }}" class="btn btn-outline-primary w-100">Voir plus</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+</body>
+</html>

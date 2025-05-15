@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+{% set title = "Ajouter un fruit" %}
+{% include "_head.html" %}
+<body class="bg-light">
+<div class="container py-4">
+  <h1 class="text-center mb-4">Ajouter un fruit</h1>
+  <form method="POST" class="card p-4 shadow-sm">
+    <div class="mb-3">
+      <label for="nom" class="form-label">Nom du fruit</label>
+      <input type="text" class="form-control" name="nom" id="nom" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="image" class="form-label">Nom de l’image (ex: pomme.jpg)</label>
+      <input type="text" class="form-control" name="image" id="image" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea class="form-control" name="description" id="description" rows="4" required></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-success">Ajouter</button>
+    <a href="{{ url_for('index') }}" class="btn btn-secondary ms-2">Retour</a>
+  </form>
+</div>
+</body>
+</html>

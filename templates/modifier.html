@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+{% set title = "Modifier " + fruit.nom %}
+{% include "_head.html" %}
+<body class="bg-light">
+<div class="container py-4">
+  <h1 class="text-center mb-4">Modifier le fruit</h1>
+
+  <form method="POST" class="card p-4 shadow-sm">
+    <div class="mb-3">
+      <label for="nom" class="form-label">Nom du fruit</label>
+      <input type="text" class="form-control" name="nom" id="nom" value="{{ fruit.nom }}" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="image" class="form-label">Image</label>
+      <input type="text" class="form-control" name="image" id="image" value="{{ fruit.image }}" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea class="form-control" name="description" id="description" rows="4" required>{{ fruit.description }}</textarea>
+    </div>
+
+    <button type="submit" class="btn btn-success">💾 Enregistrer</button>
+    <a href="{{ url_for('fruit_detail', fruit_id=fruit.id) }}" class="btn btn-secondary ms-2">Annuler</a>
+  </form>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
